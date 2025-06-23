@@ -6,16 +6,20 @@
   "scripts": {
     "init": "npx tsc --init",
     "build": "npx tsc src/*.ts --outDir dist",
-    "test": "NODE_ENV=. node dist/index.js"
+    "test": "NODE_ENV=. node dist/index.js",
+    "dev": "npx tsc && node dist/test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "koa": "^3.0.0",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "ytdlp-nodejs": "^2.3.0"
   },
   "devDependencies": {
+    "@types/koa": "^2.15.0",
     "@types/node": "^24.0.3"
   }
 }

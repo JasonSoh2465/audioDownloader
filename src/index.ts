@@ -15,7 +15,7 @@ async function downloadAudio(url: string) {
   //   const current_id = last_id + 1;
   //   let audioFilename = `${current_id}.%(ext)s`;
   //   let isPresent = true;
-    
+
   //   try {
   //     accessSync(join(audioDir, audioFilename));
   //   } catch (err) {
@@ -34,25 +34,25 @@ async function downloadAudio(url: string) {
   } catch (err) {
     mkdirSync(audioDir);
   }
-  
+
   const opt = {
     filter: {
       format: 'audioonly',
-      type: 'mp3'
+      type: 'mp3',
     },
     onProgress(progress: VideoProgress) {
       console.log(progress.percentage_str);
     },
-    output: `${audioDir}/${audioFilename}.%(ext)s`
+    output: `${audioDir}/${audioFilename}.%(ext)s`,
   };
   const output = await yt.downloadAsync(url, opt);
 
   const logger = (log: string) => {
     const logFile = join(root, 'download.txt');
-    
+
     writeFileSync(logFile, log, { encoding: 'utf8' });
     console.log(`Successfully written download log to ${logFile}.`);
-  }
+  };
 
   logger(output);
   console.log(`Succesfully downloaded audio file ${audioFilename}.`);
@@ -60,7 +60,7 @@ async function downloadAudio(url: string) {
 
 async function main() {
   const urls = [
-    'https://soundgasm.net/u/LeyLeyVA/Your-Sisters-Best-Friend-Has-A-Thing-For-Shy-Nerdy-Boys-Like-You'
+    'https://soundgasm.net/u/LeyLeyVA/Your-Sisters-Best-Friend-Has-A-Thing-For-Shy-Nerdy-Boys-Like-You',
   ];
 
   for (const url of urls) {
